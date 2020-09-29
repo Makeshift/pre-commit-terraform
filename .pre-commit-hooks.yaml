@@ -4,7 +4,7 @@
   entry: terraform_fmt.sh
   language: script
   files: (\.tf|\.tfvars)$
-  exclude: \.terraform\/.*$
+  exclude: (^((?!tf_modules).).*|\.terraform\/.*)$
 
 - id: terraform_docs
   name: Terraform docs
@@ -13,7 +13,7 @@
   entry: terraform_docs.sh
   language: script
   files: (\.tf)$
-  exclude: \.terraform\/.*$
+  exclude: (^((?!tf_modules).).*|\.terraform\/.*)$
 
 - id: terraform_docs_without_aggregate_type_defaults
   name: Terraform docs (without aggregate type defaults)
@@ -22,7 +22,7 @@
   entry: terraform_docs.sh
   language: script
   files: (\.tf)$
-  exclude: \.terraform\/.*$
+  exclude: (^((?!tf_modules).).*|\.terraform\/.*)$
 
 - id: terraform_docs_replace
   name: Terraform docs (overwrite README.md)
@@ -31,7 +31,7 @@
   entry: terraform_docs_replace
   language: python
   files: (\.tf)$
-  exclude: \.terraform\/.*$
+  exclude: (^((?!tf_modules).).*|\.terraform\/.*)$
 
 - id: terraform_validate
   name: Terraform validate
@@ -39,7 +39,7 @@
   entry: terraform_validate.sh
   language: script
   files: (\.tf|\.tfvars)$
-  exclude: \.terraform\/.*$
+  exclude: (^((?!tf_modules).).*|\.terraform\/.*)$
 
 - id: terraform_tflint
   name: Terraform validate with tflint
@@ -47,7 +47,7 @@
   entry: terraform_tflint.sh
   language: script
   files: (\.tf|\.tfvars)$
-  exclude: \.terraform\/.*$
+  exclude: (^((?!tf_modules).).*|\.terraform\/.*)$
 
 - id: terragrunt_fmt
   name: Terragrunt fmt
@@ -70,6 +70,7 @@
   description: Static analysis of Terraform templates to spot potential security issues.
   entry: terraform_tfsec.sh
   language: script
+  exclude: (^((?!tf_modules).).*)$
 
 - id: checkov
   name: Checkov
