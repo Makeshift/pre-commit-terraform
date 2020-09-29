@@ -63,7 +63,7 @@
   entry: terragrunt_validate.sh
   language: script
   files: (^infrastructure/.+\.hcl)$
-  exclude: (\.terraform\/.*|\.terragrunt\/.*)$
+  exclude: (\.terraform\/.*|\.terragrunt\/.*|^infrastructure\/terragrunt.hcl)$
 
 - id: terraform_tfsec
   name: Terraform validate with tfsec
