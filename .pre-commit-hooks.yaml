@@ -3,8 +3,8 @@
   description: Rewrites all Terraform configuration files to a canonical format.
   entry: terraform_fmt.sh
   language: script
-  files: (\.tf|\.tfvars)$
-  exclude: (^((?!tf_modules).).*|\.terraform\/.*)$
+  files: (^tf_modules\/.+(\.tf|\.tfvars))$
+  exclude: (\.terraform\/.*|\.terragrunt\/.*)$
 
 - id: terraform_docs
   name: Terraform docs
@@ -12,8 +12,8 @@
   require_serial: true
   entry: terraform_docs.sh
   language: script
-  files: (\.tf)$
-  exclude: (^((?!tf_modules).).*|\.terraform\/.*)$
+  files: (^tf_modules\/.+\.tf)$
+  exclude: (\.terraform\/.*|\.terragrunt\/.*)$
 
 - id: terraform_docs_without_aggregate_type_defaults
   name: Terraform docs (without aggregate type defaults)
@@ -21,8 +21,8 @@
   require_serial: true
   entry: terraform_docs.sh
   language: script
-  files: (\.tf)$
-  exclude: (^((?!tf_modules).).*|\.terraform\/.*)$
+  files: (^tf_modules\/.+\.tf)$
+  exclude: (\.terraform\/.*|\.terragrunt\/.*)$
 
 - id: terraform_docs_replace
   name: Terraform docs (overwrite README.md)
@@ -30,47 +30,47 @@
   require_serial: true
   entry: terraform_docs_replace
   language: python
-  files: (\.tf)$
-  exclude: (^((?!tf_modules).).*|\.terraform\/.*)$
+  files: (^tf_modules\/.+\.tf)$
+  exclude: (\.terraform\/.*|\.terragrunt\/.*)$
 
 - id: terraform_validate
   name: Terraform validate
   description: Validates all Terraform configuration files.
   entry: terraform_validate.sh
   language: script
-  files: (\.tf|\.tfvars)$
-  exclude: (^((?!tf_modules).).*|\.terraform\/.*)$
+  files: (^tf_modules\/.+(\.tf|\.tfvars))$
+  exclude: (\.terraform\/.*|\.terragrunt\/.*)$
 
 - id: terraform_tflint
   name: Terraform validate with tflint
   description: Validates all Terraform configuration files with TFLint.
   entry: terraform_tflint.sh
   language: script
-  files: (\.tf|\.tfvars)$
-  exclude: (^((?!tf_modules).).*|\.terraform\/.*)$
+  files: (^tf_modules\/.+(\.tf|\.tfvars))$
+  exclude: (\.terraform\/.*|\.terragrunt\/.*)$
 
 - id: terragrunt_fmt
   name: Terragrunt fmt
   description: Rewrites all Terragrunt configuration files to a canonical format.
   entry: terragrunt_fmt.sh
   language: script
-  files: (\.hcl)$
-  exclude: (^((?!infrastructure).).*|\.terraform\/.*|\.terragrunt\/.*)$
+  files: (^infrastructure/.+\.hcl)$
+  exclude: (\.terraform\/.*|\.terragrunt\/.*)$
 
 - id: terragrunt_validate
   name: Terragrunt validate
   description: Validates all Terragrunt configuration files.
   entry: terragrunt_validate.sh
   language: script
-  files: (\.hcl)$
-  exclude: (^((?!infrastructure).).*|\.terraform\/.*|\.terragrunt\/.*)$
+  files: (^infrastructure/.+\.hcl)$
+  exclude: (\.terraform\/.*|\.terragrunt\/.*)$
 
 - id: terraform_tfsec
   name: Terraform validate with tfsec
   description: Static analysis of Terraform templates to spot potential security issues.
   entry: terraform_tfsec.sh
   language: script
-  exclude: (^((?!tf_modules).).*)$
+  files: (^tf_modules/.+)$
 
 - id: checkov
   name: Checkov
